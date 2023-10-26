@@ -10,14 +10,16 @@ const { coaches, hasCoaches } = storeToRefs(store)
 <template>
   <section>FILTER</section>
   <section>
-    <div>
-      <button>Refresh</button>
-      <router-link :to="{ name: 'register-coaches' }">Register as Coach</router-link>
-    </div>
-    <ul v-if="hasCoaches">
-      <coach-item v-for="coach in coaches" :key="coach.id" :coach="coach" />
-    </ul>
-    <h3 v-else>No Coaches Found.</h3>
+    <base-card>
+      <div>
+        <base-button mode="outline">Refresh</base-button>
+        <base-button link :to="{ name: 'register-coaches' }">Register as Coach</base-button>
+      </div>
+      <ul v-if="hasCoaches">
+        <coach-item v-for="coach in coaches" :key="coach.id" :coach="coach" />
+      </ul>
+      <h3 v-else>No Coaches Found.</h3>
+    </base-card>
   </section>
 </template>
 

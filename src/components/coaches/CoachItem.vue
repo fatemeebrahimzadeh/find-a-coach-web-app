@@ -18,7 +18,7 @@ interface IProps {
 }
 const props = defineProps<IProps>()
 
-const { id, firstName, lastName, areas, description, hourlyRate: rate } = props.coach
+const { id, firstName, lastName, areas, hourlyRate: rate } = props.coach
 
 const fullname = computed(() => `${firstName} ${lastName}`)
 </script>
@@ -28,11 +28,11 @@ const fullname = computed(() => `${firstName} ${lastName}`)
     <h3>{{ fullname }}</h3>
     <h4>${{ rate }}/hour</h4>
     <div>
-      <span v-for="area in areas" :key="area">{{ area }}</span>
+      <base-badge v-for="area in areas" :key="area" :type="area" :title="area"/>
     </div>
     <div class="actions">
-      <router-link :to="{ name: 'contact-coach', params: { id } }">Contact</router-link>
-      <router-link :to="{ name: 'coach', params: { id } }">View Details</router-link>
+      <base-button link :to="{ name: 'contact-coach', params: { id } }">Contact</base-button>
+      <base-button link :to="{ name: 'coach', params: { id } }">View Details</base-button>
     </div>
   </li>
 </template>
