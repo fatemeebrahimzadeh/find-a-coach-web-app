@@ -1,11 +1,5 @@
-<script lang="ts">
+<script lang="ts" setup>
 import TheHeader from '@/components/layout/TheHeader.vue'
-
-export default {
-  components: {
-    TheHeader
-  }
-}
 </script>
 
 <template>
