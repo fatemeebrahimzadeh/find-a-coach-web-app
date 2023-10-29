@@ -1,7 +1,8 @@
 import { defineStore } from 'pinia'
 import { reactive, computed } from 'vue'
 
-// TODO: seperate this 
+// TODO: add ts
+// TODO: seperate this
 export type area = 'frontend' | 'backend' | 'career'
 
 export interface ICoach {
@@ -34,6 +35,6 @@ export const useCoachesStore = defineStore('coaches', () => {
       hourlyRate: 30
     }
   ])
-  const hasCoaches = computed(() => coaches && coaches.length > 0)
+  const hasCoaches = computed<boolean>(() => coaches && coaches.length > 0)
   return { coaches, hasCoaches }
 })
