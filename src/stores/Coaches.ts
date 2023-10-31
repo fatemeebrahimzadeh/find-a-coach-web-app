@@ -35,6 +35,12 @@ export const useCoachesStore = defineStore('coaches', () => {
       hourlyRate: 30
     }
   ])
+
   const hasCoaches = computed<boolean>(() => coaches && coaches.length > 0)
-  return { coaches, hasCoaches }
+
+  const addCoach = (coach: ICoach): void => {
+    coaches.push(coach)
+  }
+
+  return { coaches, hasCoaches, addCoach }
 })

@@ -1,6 +1,12 @@
 <script setup lang="ts">
-import { computed, ref } from 'vue'
+import { computed, ref, defineEmits } from 'vue'
 import type { ICoach } from './CoachItem.vue'
+
+type IEvents = {
+  (e: 'register-coach', coach: ICoach): void
+}
+
+const emit = defineEmits<IEvents>()
 
 type area = 'frontend' | 'backend' | 'career'
 
@@ -34,14 +40,15 @@ const isFormValid = (): boolean => {
 
 const submitForm = () => {
   if (!isFormValid()) return
-  const formData: Omit<ICoach, 'id'> = {
+  const coach: ICoach = {
+    id: Math.random().toString(),
     firstName: firstname.value,
     lastName: lastname.value,
     areas: areas.value,
     description: description.value,
     hourlyRate: rate.value!
   }
-  console.log(formData)
+  emit('register-coach', coach)
 }
 </script>
 

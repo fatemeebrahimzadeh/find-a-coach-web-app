@@ -39,7 +39,9 @@ const filterCoaches = computed(() => {
     <base-card>
       <div>
         <base-button mode="outline">Refresh</base-button>
-        <base-button link :to="{ name: 'register-coaches' }">Register as Coach</base-button>
+        <base-button link :to="{ name: 'register-coaches' }"
+          >Register as Coach</base-button
+        >
       </div>
       <ul v-if="hasCoaches">
         <coach-item v-for="coach in filterCoaches" :key="coach.id" :coach="coach" />
