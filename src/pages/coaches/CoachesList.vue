@@ -1,9 +1,10 @@
 <script setup lang="ts">
 import CoachItem from '@/components/coaches/CoachItem.vue'
-import CoachFilter, { type FiltersType } from '@/components/coaches/CoachFilter.vue'
+import CoachFilter from '@/components/coaches/CoachFilter.vue'
 import { useCoachesStore } from '@/stores/Coaches'
 import { storeToRefs } from 'pinia'
 import { ref, computed } from 'vue'
+import type { FiltersType } from '@/types'
 
 const store = useCoachesStore()
 const { coaches, hasCoaches } = storeToRefs(store)

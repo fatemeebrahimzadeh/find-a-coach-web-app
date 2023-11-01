@@ -1,1 +1,3 @@
-<template></template>
+<template>
+  <div>Page Note Found!</div>
+</template>

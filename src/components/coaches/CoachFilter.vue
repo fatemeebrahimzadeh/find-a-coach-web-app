@@ -1,9 +1,7 @@
 <script setup lang="ts">
+import type { FiltersType } from '@/types'
 import { defineEmits, defineProps } from 'vue'
 
-// TODO:
-type area = 'frontend' | 'backend' | 'career'
-export type FiltersType = Record<area, boolean>
 interface IProps {
   filters: FiltersType
 }
@@ -14,14 +12,16 @@ type IEvents = {
 const { filters } = defineProps<IProps>()
 const emit = defineEmits<IEvents>()
 
-// TODO:
-const setFilter = (event) => {
-  const inputId = event.target.id
-  const isActive = event.target.checked
-  const updatedFilter: Partial<FiltersType> = {
-    [inputId]: isActive
+const setFilter = (event: MouseEvent) => {
+  if (event.target instanceof HTMLInputElement) {
+    const { id, checked } = event.target
+    const updatedFilter: Partial<FiltersType> = {
+      [id]: checked
+    }
+    emit('update-filters', updatedFilter)
+  } else {
+    throw new Error('type is incorrect')
   }
-  emit('update-filters', updatedFilter)
 }
 </script>
 

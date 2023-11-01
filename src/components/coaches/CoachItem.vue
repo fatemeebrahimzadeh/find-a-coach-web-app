@@ -1,17 +1,6 @@
 <script setup lang="ts">
+import type { ICoach } from '@/types/Coach';
 import { computed, defineProps } from 'vue'
-
-// TODO: seperate this
-export type area = 'frontend' | 'backend' | 'career'
-
-export interface ICoach {
-  id: string
-  firstName: string
-  lastName: string
-  areas: area[]
-  description: string
-  hourlyRate: number
-}
 
 interface IProps {
   coach: ICoach

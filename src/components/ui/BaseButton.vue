@@ -1,13 +1,12 @@
 <script setup lang="ts">
+import type { buttonModeType } from '@/types';
 import { defineProps, withDefaults } from 'vue'
 import type { RouteLocationRaw } from 'vue-router';
-
-type modeType = 'flat' | 'outline'
 
 interface IProps {
   link?: boolean
   to?: RouteLocationRaw
-  mode?: modeType | null
+  mode?: buttonModeType | null
 }
 
 withDefaults(defineProps<IProps>(), { link: false, to: '/', mode: null })

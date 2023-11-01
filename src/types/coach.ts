@@ -1,10 +1,10 @@
-export type area = 'frontend' | 'backend' | 'career'
+import type { area } from "."
 
 export interface ICoach {
   id: string
   firstName: string
   lastName: string
-  areas: area[]
   description: string
   hourlyRate: number
+  areas: area[]
 }

@@ -1,14 +1,13 @@
 <script setup lang="ts">
 import { computed, ref, defineEmits } from 'vue'
-import type { ICoach } from './CoachItem.vue'
+import type { area } from '@/types'
+import type { ICoach } from '@/types/Coach'
 
 type IEvents = {
   (e: 'register-coach', coach: ICoach): void
 }
 
 const emit = defineEmits<IEvents>()
-
-type area = 'frontend' | 'backend' | 'career'
 
 const firstname = ref<string>('')
 const lastname = ref<string>('')
@@ -19,13 +18,12 @@ const isFrontendCoach = computed(() => !!areas.value.find((area) => area === 'fr
 const isBackendCoach = computed(() => !!areas.value.find((area) => area === 'backend'))
 const isCareerCoach = computed(() => !!areas.value.find((area) => area === 'career'))
 
-const setArea = (event) => {
-  const inputId: area = event.target.id
-  const isActive: boolean = event.target.checked
+const setArea = (event: MouseEvent) => {
+  const { id: inputId, checked: isActive } = event.target as HTMLInputElement
   if (isActive) {
-    !areas.value.includes(inputId) && areas.value.push(inputId)
+    !areas.value.includes(inputId as area) && areas.value.push(inputId as area)
   } else {
-    areas.value = areas.value.filter((area) => area !== inputId)
+    areas.value = areas.value.filter((area) => area !== inputId as area)
   }
 }
 

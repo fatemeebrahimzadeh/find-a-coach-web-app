@@ -1,18 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { useCoachesStore } from '@/stores/Coaches'
-
-// TODO: seperate this
-type area = 'frontend' | 'backend' | 'career'
-
-interface ICoach {
-  id: string
-  firstName: string
-  lastName: string
-  areas: area[]
-  description: string
-  hourlyRate: number
-}
+import type { ICoach } from '@/types/Coach';
 
 interface IProps {
   id: string

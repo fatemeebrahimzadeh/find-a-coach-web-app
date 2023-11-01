@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import CoachForm from '@/components/coaches/CoachForm.vue'
 import router from '@/router'
-import { useCoachesStore, type ICoach } from '@/stores/Coaches'
+import { useCoachesStore} from '@/stores/Coaches'
+import type { ICoach } from '@/types/Coach';
 
 const { addCoach } = useCoachesStore()
 
