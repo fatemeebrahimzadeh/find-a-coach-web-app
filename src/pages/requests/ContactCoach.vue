@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import { useContactsStore } from '@/stores/Requests'
+import { useRequestsStore } from '@/stores/Requests'
 import type { ValidatedDataMap } from '@/types'
-import type { IContact } from '@/types/Contact'
+import type { IRequest } from '@/types/Request'
 import { computed, reactive } from 'vue'
 import { useRouter } from 'vue-router'
 
-type ValidateContact = ValidatedDataMap<IContact, 'email' | 'message'>
+type ValidateContact = ValidatedDataMap<IRequest, 'email' | 'message'>
 
 const contactData = reactive<ValidateContact>({
   email: {
@@ -17,11 +17,11 @@ const contactData = reactive<ValidateContact>({
     isValid: true
   }
 })
-const { addContact } = useContactsStore()
+const { addRequest } = useRequestsStore()
 const router = useRouter()
 
-const sendRequest = (contact: IContact) => {
-  addContact(contact)
+const sendRequest = (contact: IRequest) => {
+  addRequest(contact)
   router.replace({ name: 'request' })
 }
 
@@ -55,7 +55,7 @@ const isFormValid = (): boolean => {
 
 const submitForm = () => {
   if (!isFormValid()) return
-  const contact: IContact = {
+  const contact: IRequest = {
     id: Math.random().toString(),
     email: contactData.email.value,
     message: contactData.message.value

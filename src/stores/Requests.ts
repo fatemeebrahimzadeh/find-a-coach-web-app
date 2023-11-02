@@ -1,13 +1,15 @@
 import { defineStore } from 'pinia'
-import { reactive } from 'vue'
-import type { IContact } from './../types/Contact'
+import { computed, reactive } from 'vue'
+import type { IRequest, IRequestStore } from './../types/Request'
 
-export const useContactsStore = defineStore('contacts', () => {
-  const contacts = reactive<IContact[]>([])
+export const useRequestsStore = defineStore<string, IRequestStore>('requests', () => {
+  const requests = reactive<IRequest[]>([])
 
-  const addContact = (contact: IContact): void => {
-    contacts.push(contact)
+  const hasRequests = computed<boolean>(() => requests && requests.length > 0)
+
+  const addRequest = (request: IRequest): void => {
+    requests.push(request)
   }
 
-  return { contacts, addContact }
+  return { requests, hasRequests, addRequest }
 })

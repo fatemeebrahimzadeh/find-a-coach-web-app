@@ -1,8 +1,8 @@
-import type { ICoach } from '@/types/Coach'
+import type { ICoach, ICoachStore } from '@/types/Coach'
 import { defineStore } from 'pinia'
 import { reactive, computed } from 'vue'
 
-export const useCoachesStore = defineStore('coaches', () => {
+export const useCoachesStore = defineStore<string, ICoachStore>('coaches', () => {
   const coaches = reactive<ICoach[]>([
     {
       id: 'c1',
