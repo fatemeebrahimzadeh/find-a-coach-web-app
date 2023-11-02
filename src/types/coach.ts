@@ -15,3 +15,4 @@ export interface ICoachStore {
   hasCoaches: ComputedRef<boolean>
   addCoach(coach: ICoach): void
 }
+ 
