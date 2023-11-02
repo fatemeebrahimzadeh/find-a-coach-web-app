@@ -33,23 +33,23 @@ const filterCoaches = computed(() => {
 </script>
 
 <template>
-  <section>
-    <CoachFilter @update-filters="setFilters" :filters="activeFilters"></CoachFilter>
-  </section>
-  <section>
-    <base-card>
-      <div>
-        <base-button mode="outline">Refresh</base-button>
-        <base-button link :to="{ name: 'register-coaches' }"
-          >Register as Coach</base-button
-        >
-      </div>
-      <ul v-if="hasCoaches">
-        <coach-item v-for="coach in filterCoaches" :key="coach.id" :coach="coach" />
-      </ul>
-      <h3 v-else>No Coaches Found.</h3>
-    </base-card>
-  </section>
+  <div>
+    <section>
+      <CoachFilter @update-filters="setFilters" :filters="activeFilters"></CoachFilter>
+    </section>
+    <section>
+      <base-card>
+        <div>
+          <base-button mode="outline">Refresh</base-button>
+          <base-button link :to="{ name: 'register-coaches' }">Register as Coach</base-button>
+        </div>
+        <ul v-if="hasCoaches">
+          <coach-item v-for="coach in filterCoaches" :key="coach.id" :coach="coach" />
+        </ul>
+        <h3 v-else>No Coaches Found.</h3>
+      </base-card>
+    </section>
+  </div>
 </template>
 
 <style scoped>
