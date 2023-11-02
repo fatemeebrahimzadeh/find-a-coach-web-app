@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { buttonModeType } from '@/types';
-import { defineProps, withDefaults } from 'vue'
+import { withDefaults } from 'vue'
 import type { RouteLocationRaw } from 'vue-router';
 
 interface IProps {

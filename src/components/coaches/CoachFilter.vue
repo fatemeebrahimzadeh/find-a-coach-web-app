@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { FiltersType } from '@/types'
-import { defineEmits, defineProps } from 'vue'
+import { defineEmits } from 'vue'
 
 interface IProps {
   filters: FiltersType
