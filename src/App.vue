@@ -1,9 +1,4 @@
-<script lang="ts" setup>
-import TheHeader from '@/components/layout/TheHeader.vue'
-</script>
-
 <template>
-  <the-header />
   <router-view />
 </template>
 

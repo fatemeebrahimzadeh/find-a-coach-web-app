@@ -65,32 +65,34 @@ const submitForm = () => {
 </script>
 
 <template>
-  <form @submit.prevent="submitForm">
-    <div class="form-control">
-      <label for="email">Your E-Mail</label>
-      <input
-        type="email"
-        name="email"
-        id="email"
-        v-model.trim="contactData.email.value"
-        @blur="clearValidity('email')"
-      />
-    </div>
-    <div class="form-control">
-      <label for="message">Message</label>
-      <textarea
-        name="message"
-        id="message"
-        rows="5"
-        v-model.trim="contactData.message.value"
-        @blur="clearValidity('message')"
-      ></textarea>
-    </div>
-    <p class="errors" v-if="!isValid">Please enter a valid email and non-empty message.</p>
-    <div class="actions">
-      <base-button>Send Message</base-button>
-    </div>
-  </form>
+  <div>
+    <form @submit.prevent="submitForm">
+      <div class="form-control">
+        <label for="email">Your E-Mail</label>
+        <input
+          type="email"
+          name="email"
+          id="email"
+          v-model.trim="contactData.email.value"
+          @blur="clearValidity('email')"
+        />
+      </div>
+      <div class="form-control">
+        <label for="message">Message</label>
+        <textarea
+          name="message"
+          id="message"
+          rows="5"
+          v-model.trim="contactData.message.value"
+          @blur="clearValidity('message')"
+        ></textarea>
+      </div>
+      <p class="errors" v-if="!isValid">Please enter a valid email and non-empty message.</p>
+      <div class="actions">
+        <base-button>Send Message</base-button>
+      </div>
+    </form>
+  </div>
 </template>
 
 <style scoped>

@@ -8,17 +8,19 @@ const { requests, hasRequests } = storeToRefs(store)
 </script>
 
 <template>
-  <section>
-    <base-card>
-      <header>
-        <h2>Requests Reactived</h2>
-      </header>
-      <ul v-if="hasRequests">
-        <request-item v-for="request in requests" :key="request.id" :request="request" />
-      </ul>
-      <h3 v-else>You haven't recieved any requests yet!</h3>
-    </base-card>
-  </section>
+  <div>
+    <section>
+      <base-card>
+        <header>
+          <h2>Requests Reactived</h2>
+        </header>
+        <ul v-if="hasRequests">
+          <request-item v-for="request in requests" :key="request.id" :request="request" />
+        </ul>
+        <h3 v-else>You haven't recieved any requests yet!</h3>
+      </base-card>
+    </section>
+  </div>
 </template>
 
 <style scoped>
