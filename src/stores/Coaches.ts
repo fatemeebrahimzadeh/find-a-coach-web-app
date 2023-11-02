@@ -1,19 +1,8 @@
+import type { ICoach, ICoachStore } from '@/types/Coach'
 import { defineStore } from 'pinia'
 import { reactive, computed } from 'vue'
 
-// TODO: seperate this 
-export type area = 'frontend' | 'backend' | 'career'
-
-export interface ICoach {
-  id: string
-  firstName: string
-  lastName: string
-  areas: area[]
-  description: string
-  hourlyRate: number
-}
-
-export const useCoachesStore = defineStore('coaches', () => {
+export const useCoachesStore = defineStore<string, ICoachStore>('coaches', () => {
   const coaches = reactive<ICoach[]>([
     {
       id: 'c1',
@@ -34,6 +23,12 @@ export const useCoachesStore = defineStore('coaches', () => {
       hourlyRate: 30
     }
   ])
-  const hasCoaches = computed(() => coaches && coaches.length > 0)
-  return { coaches, hasCoaches }
+
+  const hasCoaches = computed<boolean>(() => coaches && coaches.length > 0)
+
+  const addCoach = (coach: ICoach): void => {
+    coaches.push(coach)
+  }
+
+  return { coaches, hasCoaches, addCoach }
 })

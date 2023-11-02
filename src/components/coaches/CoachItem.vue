@@ -1,17 +1,6 @@
 <script setup lang="ts">
+import type { ICoach } from '@/types/Coach';
 import { computed, defineProps } from 'vue'
-
-// TODO: seperate this
-export type area = 'frontend' | 'backend' | 'career'
-
-export interface ICoach {
-  id: string
-  firstName: string
-  lastName: string
-  areas: area[]
-  description: string
-  hourlyRate: number
-}
 
 interface IProps {
   coach: ICoach
@@ -20,12 +9,12 @@ const props = defineProps<IProps>()
 
 const { id, firstName, lastName, areas, hourlyRate: rate } = props.coach
 
-const fullname = computed(() => `${firstName} ${lastName}`)
+const fullName = computed(() => `${firstName} ${lastName}`)
 </script>
 
 <template>
   <li>
-    <h3>{{ fullname }}</h3>
+    <h3>{{ fullName }}</h3>
     <h4>${{ rate }}/hour</h4>
     <div>
       <base-badge v-for="area in areas" :key="area" :type="area" :title="area"/>
