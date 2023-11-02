@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import { computed, ref, defineEmits, reactive } from 'vue'
-import type { area } from '@/types'
-import type { ICoach, ValidatedCoachDataMap } from '@/types/Coach'
+import { computed, defineEmits, reactive } from 'vue'
+import type { ValidatedDataMap, area } from '@/types'
+import type { ICoach } from '@/types/Coach'
 
 type IEvents = {
   (e: 'register-coach', coach: ICoach): void
 }
-type ValidateCoach = ValidatedCoachDataMap<
+type ValidateCoach = ValidatedDataMap<
   ICoach,
   'firstName' | 'lastName' | 'hourlyRate' | 'description' | 'areas'
 >
@@ -57,6 +57,14 @@ const setArea = (event: MouseEvent) => {
 
 // //#region validation
 
+const isValid = computed(
+  () =>
+    !!validatedCoach.firstName.isValid &&
+    !!validatedCoach.lastName.isValid &&
+    !!validatedCoach.hourlyRate.isValid &&
+    !!validatedCoach.areas.isValid
+)
+
 const isFirstNameValid = () => {
   if (validatedCoach.firstName.value === '') {
     validatedCoach.firstName.isValid = false
@@ -100,7 +108,7 @@ const isFormValid = (): boolean => {
   isLastNameValid()
   isRateValid()
   isAreasValid()
-  return isFirstNameValid() && isLastNameValid() && isRateValid() && isAreasValid()
+  return isValid.value
 }
 
 const submitForm = () => {
@@ -198,7 +206,6 @@ const submitForm = () => {
         <label for="career">Career Advisory</label>
       </div>
       <p v-if="!validatedCoach.areas.isValid">At least one expertise must be selected.</p>
-
     </div>
     <base-button>Register</base-button>
   </form>

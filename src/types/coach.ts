@@ -8,10 +8,3 @@ export interface ICoach {
   hourlyRate: number
   areas: area[]
 }
-
-export type ValidatedCoachDataMap<T, K extends keyof T> = {
-  [P in K]: {
-    value: T[P]
-    isValid?: boolean
-  }
-}
